@@ -4,6 +4,7 @@ iTCSRTotalizer
 iTCのSalesReportから合計を求める
 
 #使い方
+iTCからレポートファイルをダウンロードし解凍して置いている事を前提とする
 
 ##configを作成
 
