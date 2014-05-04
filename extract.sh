@@ -10,7 +10,7 @@ else
 fi
 
 
-# CSVから必要な列だけ抽出する
+# 必要な列だけ抽出する
 # 3列目 : SKU
 # 5列目 : Title
 # 8列目 : Units
@@ -18,12 +18,12 @@ fi
 # 12列目 : Customer Currency
 for file in $*
 do
-	CSV="${REPORT_DIR}/S_W_${VENDOR_ID}_${file}.csv"
+	FILE="${REPORT_DIR}/S_W_${VENDOR_ID}_${file}.txt"
 
-	if [ -e ${CSV} ]; then
-		awk 'BEGIN {FS="\t"} $9 != 0 {printf("%s\t%s\t%s\t%s\t%s\n"),$3,$5,$8,$9,$12}' ${CSV} | grep -v '^SKU' >> ${TEMP}
+	if [ -e ${FILE} ]; then
+		awk 'BEGIN {FS="\t"} $9 != 0 {printf("%s\t%s\t%s\t%s\t%s\n"),$3,$5,$8,$9,$12}' ${FILE} | grep -v '^SKU' >> ${TEMP}
 	else
-		echo "not found ${CSV}"
+		echo "not found ${FILE}"
 	fi
 done
 
