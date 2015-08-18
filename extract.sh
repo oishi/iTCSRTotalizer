@@ -1,5 +1,6 @@
 #!/bin/sh
-. config
+REPORT_DIR="reports"
+VENDOR_ID="80071992"
 
 # テンポラリ作成
 TEMP="temp"
@@ -18,7 +19,7 @@ fi
 # 12列目 : Customer Currency
 for file in $*
 do
-	FILE="${REPORT_DIR}/S_W_${VENDOR_ID}_${file}.txt"
+	FILE="${REPORT_DIR}/weekly/S_W_${VENDOR_ID}_${file}.txt"
 
 	if [ -e ${FILE} ]; then
 		awk 'BEGIN {FS="\t"} $9 != 0 {printf("%s\t%s\t%s\t%s\t%s\n"),$3,$5,$8,$9,$12}' ${FILE} | grep -v '^SKU' >> ${TEMP}
